@@ -11,5 +11,5 @@ pip install --upgrade pip
 # Install dependencies
 pip install -r dependencies.txt
 
-echo "Setup complete. Activate the environment with: source venv/bin/activate"
+echo "Dependencies installed. You can run the program now."
 
