@@ -1,4 +1,3 @@
-#!.venv/bin/python
 import argparse
 import cv2
 from pathlib import Path
@@ -23,20 +22,17 @@ def image2ascii(pngpath, txtpath):
         im = im.resize((120,40))
         pillars, lines = im.size
 
-        ##  Grey scale
+        # Grey scale
         im = im.convert("L")
-        # Basic one
+        # Palette
         chars = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", ".", " "]
-
-        # F1 (dont worry about this one)
-        #chars = ["@", "#", "S", "%", " ", " ", "-", ";", ":", ",", ".", " "]
 
         pixels = list(im.getdata())
         new_pixels = []
         for pixel in pixels:
             new_pixels.append(chars[pixel//22])
 
-            ## Write to txt
+            # Write to txt
         with open(f"{txtpath}/frame{frame_id}.txt", "w") as file:
             for line in range(lines):
                 for pillar in range(pillars):
@@ -56,7 +52,7 @@ def getframes(video, savefolder):
                 im.seek(frame)
                 im.save(f"{savefolder}/frame{frame_id}.PNG", "PNG")
     except:
-            ##  Turn into mp4
+            # Turn into mp4
         filename, file_extension = os.path.splitext(f'{video}')
         clip = moviepy.VideoFileClip(f"{filename}{file_extension}")
         clip.write_videofile(f"{filename}.mp4")
