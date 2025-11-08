@@ -105,7 +105,7 @@ image2ascii(f"{file_name}/frames",f"{file_name}/txt")
 shutil.rmtree(f"{file_name}/frames")
 
 play_command = f'while read frame; do   clear;   cat "$frame";   sleep 0.1; done < <(ls {file_name}/txt/frame*.txt | sort)'
-print(f"To play the ASCII video, in your terminal write the following code.\n {play_command}\n Manipulate the number after 'sleep' to change fps. Enjoy!")
+print(f"To play the ASCII video, in your terminal write the following code.\n For Linux and Mac: {play_command}\n Manipulate the number after 'sleep' to change fps. Enjoy!")
 
 
 
